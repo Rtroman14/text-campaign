@@ -145,7 +145,7 @@ class Helpers {
             city: contact.City || "",
             state: contact.State || "",
             postalCode: contact.Zip || "",
-            companyName: contact["Company Name"] || "",
+            companyName: this.formatCompanyName(contact["Company Name"]) || "",
             customField: {},
         };
     }
@@ -155,6 +155,26 @@ class Helpers {
     }
 
     hasDuplicates = (array) => new Set(array).size !== array.length;
+
+    capitalize = (s) => (s && s[0].toUpperCase() + s.slice(1)) || "";
+
+    formatCompanyName = (companyName) => {
+        const companyNameArray = companyName.split(" ");
+
+        let newCompany = [];
+
+        for (let name of companyNameArray) {
+            if (name.length > 5) {
+                newCompany.push(this.capitalize(name.toLowerCase()));
+            } else {
+                newCompany.push(name);
+            }
+        }
+
+        newCompany = newCompany.join(" ").trim();
+
+        return newCompany;
+    };
 }
 
 module.exports = new Helpers();

@@ -1,6 +1,6 @@
 module.exports = {
     NUM_CONTACTS: 20,
-    SLACK_NOTIFICATION: false,
+    SLACK_NOTIFICATION: true,
     REMOVE_ACCOUNTS: false,
     removeAccounts: (accounts) =>
         accounts.filter(
@@ -18,7 +18,7 @@ module.exports = {
                 acc.Account !== "Farha Roofing - Lamar" &&
                 acc.Client !== "Level Edge Construction"
         ),
-    KEEP_ACCOUNTS: true,
+    KEEP_ACCOUNTS: false,
     keepAccounts: (accounts) =>
         (accounts = accounts.filter(
             (acc) =>
