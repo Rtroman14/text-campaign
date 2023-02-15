@@ -159,22 +159,32 @@ class Helpers {
     capitalize = (s) => (s && s[0].toUpperCase() + s.slice(1)) || "";
 
     formatCompanyName = (companyName) => {
-        const companyNameArray = companyName.split(" ");
+        if (companyName) {
+            const companyNameArray = companyName.split(" ");
 
-        let newCompany = [];
+            let newCompany = [];
 
-        for (let name of companyNameArray) {
-            if (name.length > 5) {
-                newCompany.push(this.capitalize(name.toLowerCase()));
-            } else {
-                newCompany.push(name);
+            for (let name of companyNameArray) {
+                if (name.length > 5) {
+                    newCompany.push(this.capitalize(name.toLowerCase()));
+                } else {
+                    newCompany.push(name);
+                }
             }
+
+            newCompany = newCompany.join(" ").trim();
+
+            return newCompany;
         }
 
-        newCompany = newCompany.join(" ").trim();
-
-        return newCompany;
+        return "";
     };
+
+    removeFacilityAccounts = (accounts) =>
+        accounts.filter((currentAccount) => !currentAccount.Account.includes("Facilities"));
+
+    removeReonomyAccounts = (accounts) =>
+        accounts.filter((currentAccount) => currentAccount.Account.includes("Facilities"));
 }
 
 module.exports = new Helpers();

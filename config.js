@@ -1,5 +1,6 @@
 module.exports = {
-    NUM_CONTACTS: 20,
+    NUM_REONOMY: 30,
+    NUM_FACILITIES: 10,
     SLACK_NOTIFICATION: true,
     REMOVE_ACCOUNTS: false,
     removeAccounts: (accounts) =>
@@ -22,8 +23,8 @@ module.exports = {
     keepAccounts: (accounts) =>
         (accounts = accounts.filter(
             (acc) =>
-                acc.Account === "Roper Roofing - Facilities" ||
-                acc.Account === "Farha Roofing - Durango - Facilities" ||
-                acc.Account === "J&M Roofing - Facilities"
+                // acc.Account === "Roper Roofing - Facilities" ||
+                // acc.Account === "Farha Roofing - Durango - Facilities" ||
+                acc.Account === "RoofCARE - Facilities"
         )),
 };
