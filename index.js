@@ -100,7 +100,7 @@ const MAX_NUM_TEXTS = Math.max(NUM_REONOMY, NUM_FACILITIES);
                 accounts = _.removeFacilityAccounts(accounts);
             }
 
-            MAX_NUM_TEXTS !== numText && (await _.minutesWait(1.9));
+            MAX_NUM_TEXTS !== numText && (await _.minutesWait(1.5));
         }
 
         return;

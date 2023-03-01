@@ -38,12 +38,23 @@ module.exports = async (account) => {
                     );
 
                     return { ...account, status: "Live", texted: highLevelContact.name };
+                } else {
+                    // RUNS IF ERROR WHILE TEXTING
+                    await Airtable.updateContact(account["Base ID"], contact.recordID, {
+                        Status: "Error",
+                    });
+
+                    console.log(
+                        `ERROR TEXTING CONTACT --- ${account.Client} --- ${highLevelContact.name}`
+                    );
+
+                    return { ...account, status: "Live", texted: highLevelContact.name };
                 }
             } catch (error) {
                 // RUNS IF ERROR WHILE TEXTING
-                // await Airtable.updateContact(account["Base ID"], contact.recordID, {
-                //     Error: true,
-                // });
+                await Airtable.updateContact(account["Base ID"], contact.recordID, {
+                    Status: "Error",
+                });
 
                 console.log(`ERROR TEXTING CONTACT --- ${account.Client} --- ${error.message}`);
 
