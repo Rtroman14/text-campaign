@@ -1,7 +1,6 @@
 module.exports = {
     NUM_REONOMY: 30,
     NUM_FACILITIES: 10,
-    NUM_PREMIER_CLAIMS: 100,
     SLACK_NOTIFICATION: true,
     REMOVE_ACCOUNTS: false,
     removeAccounts: (accounts) =>
