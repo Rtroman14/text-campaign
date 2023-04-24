@@ -11,7 +11,7 @@ module.exports = {
                 acc.Client !== "HD Roofing" &&
                 acc.Client !== "Level Edge Construction"
         ),
-    KEEP_ACCOUNTS: true,
+    KEEP_ACCOUNTS: false,
     keepAccounts: (accounts) =>
         (accounts = accounts.filter(
             (acc) =>
