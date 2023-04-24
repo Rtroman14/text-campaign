@@ -79,6 +79,25 @@ class AirtableApi {
         }
     }
 
+    async recordsByView(baseID, table, view) {
+        try {
+            const base = await this.assignAirtable(baseID);
+
+            const res = await base(table).select({ view }).all();
+
+            const contacts = res.map((contact) => {
+                return {
+                    ...contact.fields,
+                    recordID: contact.getId(),
+                };
+            });
+
+            return contacts;
+        } catch (error) {
+            console.log("ERROR GETCONTACTS() ---", error);
+        }
+    }
+
     async updateContact(baseID, recordID, updatedFields) {
         try {
             const base = await this.assignAirtable(baseID);

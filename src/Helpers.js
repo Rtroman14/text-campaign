@@ -185,6 +185,9 @@ class Helpers {
 
     removeReonomyAccounts = (accounts) =>
         accounts.filter((currentAccount) => currentAccount.Account.includes("Facilities"));
+
+    removePremierClaimsAccounts = (accounts) =>
+        accounts.filter((currentAccount) => !currentAccount.Account.includes("Premier Claims"));
 }
 
 module.exports = new Helpers();

@@ -117,4 +117,31 @@ module.exports = class Highlevel {
             return false;
         }
     }
+
+    createCustomField = async (name) => {
+        const data = {
+            name,
+            dataType: "LARGE_TEXT",
+            placeholder: "Placeholder Text",
+            position: 0,
+        };
+
+        try {
+            const options = {
+                method: "POST",
+                maxBodyLength: Infinity,
+                url: "https://rest.gohighlevel.com/v1/custom-fields/",
+                headers: {
+                    Authorization: `Bearer ${this.token}`,
+                },
+                data: data,
+            };
+
+            const res = await axios(options);
+            return res.data;
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+    };
 };

@@ -8,6 +8,7 @@ const _ = require("./src/Helpers");
 const {
     NUM_REONOMY,
     NUM_FACILITIES,
+    NUM_PREMIER_CLAIMS,
     SLACK_NOTIFICATION,
     KEEP_ACCOUNTS,
     REMOVE_ACCOUNTS,
@@ -17,7 +18,7 @@ const {
 
 const today = moment(new Date()).format("MM/DD/YYYY");
 
-const MAX_NUM_TEXTS = Math.max(NUM_REONOMY, NUM_FACILITIES);
+const MAX_NUM_TEXTS = Math.max(NUM_FACILITIES, NUM_REONOMY, NUM_PREMIER_CLAIMS);
 
 (async () => {
     try {
@@ -93,6 +94,16 @@ const MAX_NUM_TEXTS = Math.max(NUM_REONOMY, NUM_FACILITIES);
                 const facilityAccounts = _.removeReonomyAccounts(accounts);
                 for (let facilityAccount of facilityAccounts) {
                     await Airtable.updateCampaign(facilityAccount.recordID, {
+                        "Campaign Status": "Live",
+                        "Last Updated": today,
+                    });
+                }
+                accounts = _.removeFacilityAccounts(accounts);
+            }
+            if (numText === NUM_PREMIER_CLAIMS) {
+                const premierClaimsAccounts = _.removePremierClaimsAccounts(accounts);
+                for (let premierClaimsAccount of premierClaimsAccounts) {
+                    await Airtable.updateCampaign(premierClaimsAccount.recordID, {
                         "Campaign Status": "Live",
                         "Last Updated": today,
                     });

@@ -1,31 +1,28 @@
 module.exports = {
     NUM_REONOMY: 30,
     NUM_FACILITIES: 10,
+    NUM_PREMIER_CLAIMS: 100,
     SLACK_NOTIFICATION: true,
     REMOVE_ACCOUNTS: false,
     removeAccounts: (accounts) =>
         accounts.filter(
             (acc) =>
                 acc.Client !== "SIRC" &&
-                acc.Client !== "Built Right Roofing" &&
                 acc.Client !== "HD Roofing" &&
-                acc.Client !== "All Elements" &&
-                acc.Client !== "Dr. Roof" &&
-                acc.Client !== "Greentek" &&
-                acc.Client !== "Integrity Pro Roofing" &&
-                acc.Client !== "Pinnacle Roofing Group" &&
-                acc.Client !== "SCS Construction" &&
-                acc.Client !== "Stone Roofing" &&
-                acc.Account !== "Farha Roofing - Lamar" &&
                 acc.Client !== "Level Edge Construction"
         ),
-    KEEP_ACCOUNTS: false,
+    KEEP_ACCOUNTS: true,
     keepAccounts: (accounts) =>
         (accounts = accounts.filter(
             (acc) =>
-                // acc.Account === "J&M Roofing - Facilities" ||
-                // acc.Account === "Waddle Exteriors - Facilities" ||
-                // acc.Account === "HD Roofing - Facilities" ||
-                acc.Account === "Mitchell and Sons Roofing"
+                // acc.Account === "Arcus Roof - Facilities" ||
+                // acc.Account === "A Best Roofing - Facilities" ||
+                // acc.Account === "Howard Construction - Facilities" ||
+                // acc.Account === "Precision Roofing - Facilities" ||
+                // acc.Account === "Yoder's Roofing Service - Facilities" ||
+                // acc.Account === "Executive Roofing - Facilities" ||
+                // acc.Account === "Paramount Commercial Roofing Systems - Facilities" ||
+                // acc.Account === "Stone Roofing - Facilities" ||
+                acc.Account === "Premier Claims - Iowa"
         )),
 };
